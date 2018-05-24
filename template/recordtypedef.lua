@@ -10,11 +10,19 @@
 --           - initial API and implementation and initial documentation
 --------------------------------------------------------------------------------
 return [[#
+<div class="w3-container w3-white w3-leftbar w3-border-light-blue" id="record_type">
 # --
 # -- Inheritance
 # --
-#if _recordtypedef.supertype then
-  <h$(i)> Extends $( purelinkto(_recordtypedef.supertype)) </h$(i)>
+#local function inherit( recordtypedef )
+#  if recordtypedef and recordtypedef.supertype then
+     <h$(i)> Extends $( purelinkto( recordtypedef.supertype ) ) </h$(i)>
+#    local extended = inherit( recordtypedef.supertype )
+#  end
+#  return recordtypedef
+#end
+#if _recordtypedef then
+#  inherit( _recordtypedef )
 #end
 # --
 # -- Descriptions
@@ -72,6 +80,31 @@ return [[#
 </dl>
 # end
 #  for name, item in sortedpairs( _recordtypedef.fields ) do
-    $( applytemplate(item, i) )
+#    if item.type then
+#      local typedef = item:resolvetype()
+#      if not typedef or typedef.tag ~= 'functiontypedef' then 
+<dd>   
+        $( applytemplate(item, i) )
+</dd>   
+#      end
+#    end
 #  end
-#end ]]
+</dl>
+<dl class="function">
+<dt>
+  <h$(i)>Function(s)</h$(i)>
+</dt>
+#  for name, item in sortedpairs( _recordtypedef.fields ) do
+#    if item.type then
+#      local typedef = item:resolvetype()
+#      if typedef and typedef.tag == 'functiontypedef' then 
+<dd>
+        $( applytemplate(item, i) )
+</dd>
+#      end
+#    end
+#  end
+</dl>  
+#end 
+</div>
+]]

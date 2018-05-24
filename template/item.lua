@@ -10,8 +10,8 @@
 --           - initial API and implementation and initial documentation
 --------------------------------------------------------------------------------
 return 
-[[<dl class="function">
-<dt>
+[[<dl>
+<dt><h$(i)>
 # --
 # -- Resolve item type definition
 # --
@@ -24,14 +24,18 @@ return
 #  --Show link only when available 
 #  local link = purelinkto(_item.type)
 #  if link then
-    <em>$( link )</em>
+    $( link )
 #  else
-    <em>$(purename(_item.type))</em>
+    $(purename(_item.type))
 #  end
 #end
-<a id="$(anchor(_item))" >
-<strong>$( purename(_item) )</strong>
-</a>
+#if typedef and typedef.tag == 'functiontypedef' then
+<div class="w3-container w3-light-blue" onclick="myFunction('#Functions##$(_item.name)')">
+<i class="fa fa-arrow-down" w3-white style="font-size:24px;"></i>
+<a id="$(anchor(_item))" ><strong>$( purename(_item) )</strong></a>
+</div>
+#end
+</h$(i)>
 </dt>
 <dd>
 # local ignoredescription = false
@@ -49,7 +53,9 @@ return
 # --
 #if typedef and typedef.tag == 'functiontypedef' then
 #  local fdef = typedef
+<div id= "#Functions##$(_item.name)" class="w3-hide w3-white w3-leftbar w3-border-light-blue">
   $( applytemplate(fdef, i,nil,isinvokable(_item),ignoredescription) )
+</div>
 #else
 #--
 #-- Show usage samples for item which is not a function

@@ -202,7 +202,7 @@ end
 --                      item (external func global) => functionname(param1, param2,...)
 --                  item (external non func global) => itemname
 M.prettynametypes = {
-  primitivetyperef = function(o) return string.format('#%s', o.typename) end,
+  primitivetyperef = function(o) return string.format('\#%s', o.typename) end,
   externaltyperef = function(o) return string.format('%s#%s', o.modulename, o.typename) end,
   inlinetyperef = function(o)
     if not(o.def and o.def.tag == "recordtypedef" and o.def.name) then

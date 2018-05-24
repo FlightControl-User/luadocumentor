@@ -71,6 +71,10 @@ function M.generatedocforfiles(filenames, cssname,noheuristic)
     tag = 'page'
   }
 
+  for FileName, File in pairs( templateengine.env [ "anchortypes" ] ) do
+    print ( FileName )
+  end
+
   --
   -- Iterate over modules, generating complete doc pages
   --

@@ -14,13 +14,18 @@ return
 <html>
 #if _page.headers and #_page.headers > 0 then
   <head>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 #  for _, header in ipairs(_page.headers) do
     $(header)
 #  end
    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+   
   </head>
 #end
 <body>
+<header class="w3-container w3-indigo">
+    <span class="w3-opennav w3-xlarge" onclick="w3_open()">&#9776;</span><h1>MOOSE for DCS World</h1>
+</header>
 <div id="container">
 <div id="product">
   <div id="product_logo"></div>
@@ -31,39 +36,45 @@ return
 # --
 # -- Generating lateral menu
 # --
-  <div id="navigation">
+  <nav class="w3-sidenav w3-indigo w3-animate-left" style="display:none">
+  <a href="javascript:void(0)" 
+  onclick="w3_close()"
+  class="w3-closenav w3-large">Close &times;</a>
 #  local index = 'index'
 #  if _page.modules then
-    <h2>Modules</h2>
-#    -- Check if an index is defined
-#    if _page.modules [ index ] then
-#      local module = _page.modules [ index ]
-      <ul><li>
-#      if module ~= _page.currentmodule then
-        <a href="$( linkto(module) )">$(module.name)</a>
-#      else
-        $(module.name)
-#      end
-      </li></ul>
-#    end
-#
-    <ul>
+   <table class="w3-table w3-blue w3-bordered w3-border">
 #    -- Generating links for all modules
 #    for _, module in sortedpairs( _page.modules ) do
 #      --  Except for current one
 #      if module.name ~= index then
-#        if module ~= _page.currentmodule then
-          <li><a href="$( linkto(module) )">$(module.name)</a></li>
-#        else
-          <li>$(module.name)</li>
-#        end
+         <tr>
+         <td class="name"><p><strong>$( purelinkto(module) )</strong></p></td>
+         <td class="summary">$( module.description and format( module.shortdescription ) )</td>
+         </tr>         
 #      end
 #    end
-    </ul>
+   </table>
 #  end
-  </div>
+  </nav>
   $( applytemplate(_page.currentmodule) )
 </div>
+<script>
+function w3_open() {
+    document.getElementsByClassName("w3-sidenav")[0].style.width = "100%";
+    document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
+}
+function w3_close() {
+    document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
+}
+function myFunction(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
 </body>
 </html>
 ]]

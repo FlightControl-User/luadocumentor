@@ -50,7 +50,7 @@ end
 --
 -- define css file name
 --
-local cssfilename = "stylesheet.css"
+local cssfilename = "w3.css"
 
 --
 -- Parse files from given folders

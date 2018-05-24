@@ -10,6 +10,7 @@
 --           - initial API and implementation and initial documentation
 --------------------------------------------------------------------------------
 return [[#
+<div class="w3-container w3-white" id="functiontype">
 # local fdef = _functiontypedef
 # local ignorefirstparam = templateparams[1]
 # local ignoredescription = templateparams[2]
@@ -38,11 +39,12 @@ return [[#
 # -- List parameters
 # if paramcount > 0 then
     <h$(i)>Parameter$( paramcount > 1 and 's' )</h$(i)>
-    <ul>
+    <table class="w3-table">
 #   for position, param in ipairs( fdef.params ) do
 #     if not (position == 1 and ignorefirstparam) then
-        <li>
-#       local paramline = "<code><em>"
+        <tr>
+        <td>
+#       local paramline = ""
 #       if param.type then
 #         local link = linkto( param.type )
 #         local name = purename( param.type )
@@ -53,7 +55,7 @@ return [[#
 #         end
 #       end
 #
-#       paramline = paramline .. " " .. param.name ..  " "
+#       paramline = paramline .. " <strong>" .. param.name ..  "</strong> "
 #
 #       if param.optional then
 #         paramline = paramline .. "optional" .. " "
@@ -61,18 +63,20 @@ return [[#
 #       if param.hidden then 
 #         paramline = paramline .. "hidden"
 #       end
-#
-#         paramline = paramline .. "</em></code>: "
-#
+        $(paramline)
+        </td>
+        <td>
+#       paramline = ""
 #       if param.description and #param.description > 0 then
 #         paramline = paramline .. "\n" .. param.description
 #       end
 #
         $( format (paramline))
-        </li>
+        </td>
+        </tr>
 #     end
 #   end
-    </ul>
+    </table>
 # end
 #
 # --
@@ -139,4 +143,5 @@ return [[#
 #if fdef.metadata and fdef.metadata.usage then
   $( applytemplate(fdef.metadata.usage, i) )
 #end
+</div>
 ]]

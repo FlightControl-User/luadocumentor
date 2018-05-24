@@ -13,16 +13,16 @@ return [[#
 # local calldef = _recordtypedef:getcalldef()
 # local hasfield = not isempty(_recordtypedef.fields)
 # if calldef or hasfield then
-  <table class="function_list">
+  <table class="w3-table">
 # if calldef then
     <tr>
-    <td class="name" nowrap="nowrap">$( purelinkto(calldef,_recordtypedef) )</td>
+    <td class="name"><p>$( purelinkto(calldef,_recordtypedef) )</p></td>
     <td class="summary">$( format(calldef.shortdescription) )</td>
     </tr>
 # end
 #  for _, item in sortedpairs( _recordtypedef.fields ) do
     <tr>
-    <td class="name" nowrap="nowrap">$( purelinkto(item) )</td>
+    <td class="name"><p>$( purelinkto(item) )</p></td>
     <td class="summary">$( format(item.shortdescription) )</td>
     </tr>
 #   end
