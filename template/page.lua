@@ -23,8 +23,11 @@ return
   </head>
 #end
 <body>
-<header class="w3-container w3-indigo">
-    <span class="w3-opennav w3-xlarge" onclick="w3_open()">&#9776;</span><h1>MOOSE for DCS World</h1>
+<header class="w3-container w3-indigo w3-theme w3-top">
+<h1>
+  <i class="w3-opennav fa fa-bars" onclick="w3_open()"></i>
+  MOOSE for DCS World
+</h1>
 </header>
 <div id="container">
 <div id="product">
@@ -48,8 +51,8 @@ return
 #      --  Except for current one
 #      if module.name ~= index then
          <tr>
-         <td class="name"><p><strong>$( purelinkto(module) )</strong></p></td>
-         <td class="summary">$( module.description and format( module.shortdescription ) )</td>
+         <td class="w3-container"><p><h1><strong>$( purelinkto(module) )</strong></p></h1></td>
+         <td class="w3-container">$( module.description and format( module.shortdescription ) )</td>
          </tr>         
 #      end
 #    end

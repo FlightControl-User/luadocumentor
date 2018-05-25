@@ -34,6 +34,8 @@ return
 <i class="fa fa-arrow-down" w3-white style="font-size:24px;"></i>
 <a id="$(anchor(_item))" ><strong>$( purename(_item) )</strong></a>
 </div>
+#else
+<a id="$(anchor(_item))" ><strong>$( purename(_item) )</strong></a>
 #end
 </h$(i)>
 </dt>
