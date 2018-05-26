@@ -18,8 +18,8 @@ return
 #  for _, module in sortedpairs( _index.modules ) do
 #    if module.tag ~= 'index' then
       <tr>
-      <td class="name"><p>$( purelinkto(module) )</p></td>
-      <td class="summary">$( module.description and format(module.shortdescription) )</td>
+      <td class="name" style="width=30%;"><p>$( purelinkto(module) )</p>$( module.description and format(module.shortdescription) )</td>
+      <td class="summary" style="width:70%;"><img src="..\Images\$(module.image)" alt="Banner Image"/></td>
       </tr>
 #    end
 #  end

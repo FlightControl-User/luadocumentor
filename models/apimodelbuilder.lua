@@ -274,6 +274,12 @@ function M.createmoduleapi(ast,modulename)
 
     -- if comment is an ld comment
     if regulartags then
+
+      -- manage image
+      if regulartags ["image"] then
+        _file.image = regulartags["image"][1].name
+      end
+
       -- manage "module" comment
       if regulartags["module"] then
         -- get name
@@ -294,6 +300,7 @@ function M.createmoduleapi(ast,modulename)
             table.insert(_file.returns,_return)
           end
         end
+
         -- if no returns on module create a defaultreturn of type #modulename
         if #_file.returns == 0 and _file.name then
           -- create internal type ref

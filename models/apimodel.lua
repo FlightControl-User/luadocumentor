@@ -20,6 +20,7 @@ function M._file()
     -- FIELDS
     tag              = "file",
     name             = nil,    -- string
+    image            = nil,    -- string
     shortdescription = "",    -- string
     description      = "",    -- string
     types            = {},     -- map from typename to type

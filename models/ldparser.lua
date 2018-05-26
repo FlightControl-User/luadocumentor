@@ -69,6 +69,23 @@ local modulenameparser = gg.list({
   primary  = idparser,
   separators = '.'
 })
+
+-- ----------------------------------------------------
+-- parse a imagename  (id.)?id
+-- return a table {name, lineinfo)
+-- ----------------------------------------------------
+local imagenameparser = gg.list({
+  builder =  function (result)
+    local ids = {}
+    for i, id in ipairs(result) do
+      table.insert(ids,id.name)
+    end
+    return {name = table.concat(ids,".")}
+  end,
+  primary  = idparser,
+  separators = '.'
+})
+
 -- ----------------------------------------------------
 -- parse a typename  (id.)?id
 -- return a table {name, lineinfo)
@@ -467,6 +484,26 @@ local moduleparsers = {
 }
 
 -- ----------------------------------------------------
+-- parse a image tag
+-- ----------------------------------------------------
+local imageparsers = {
+  -- full parser
+  gg.sequence({
+    builder =   function (result)
+      return { name = result[1].name }
+    end,
+    '@','image', imagenameparser
+  }),
+  -- parser without name
+  gg.sequence({
+    builder =   function (result)
+      return {}
+    end,
+    '@','image'
+  })
+}
+
+-- ----------------------------------------------------
 -- parse a third tag
 -- ----------------------------------------------------
 local thirdtagsparser = gg.sequence({
@@ -483,6 +520,7 @@ local function initparser()
   -- each tag name has several parsers
   registeredparsers  = {
     ["module"]   = moduleparsers,
+    ["image"]    = imageparsers,
     ["return"]   = returnparsers,
     ["type"]     = typeparsers,
     ["field"]    = fieldparsers,

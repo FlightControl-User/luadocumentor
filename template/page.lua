@@ -51,8 +51,8 @@ return
 #      --  Except for current one
 #      if module.name ~= index then
          <tr>
-         <td class="w3-container"><p><h1><strong>$( purelinkto(module) )</strong></p></h1></td>
-         <td class="w3-container">$( module.description and format( module.shortdescription ) )</td>
+         <td class="w3-panel" style="width=30%;"><p><h1><strong>$( purelinkto(module) )</strong></p></h1>$( module.description and format( module.shortdescription ) )</td>
+         <td class="w3-panel"><img src="..\Images\$(module.image)" alt="Banner Image"/></td>
          </tr>         
 #      end
 #    end

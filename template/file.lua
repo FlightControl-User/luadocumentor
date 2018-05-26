@@ -10,12 +10,17 @@
 --           - initial API and implementation and initial documentation
 --------------------------------------------------------------------------------
 return[[#
+# if _file.image then
+<img src="..\Images\$(_file.image)" alt="Banner Image"/>   
+# end
 <div class="w3-container" id="content">
 # --
 # -- Module name
 # --
 # if _file.name then
-   <div class="w3-container w3-blue" id="module_title"><h$(i)>Module <strong>$(_file.name)</strong></h$(i)></div>
+   <div class="w3-container w3-blue" id="module_title">
+   <h$(i)>Module <strong>$(_file.name)</strong></h$(i)>
+   </div>
    <div class="w3-container w3-white w3-leftbar w3-border-blue" id="module_description">
 # end
 # --
