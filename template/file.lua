@@ -50,9 +50,9 @@ return[[#
    <div class="w3-container w3-blue">
    <table class="w3-table w3-left-align w3-blue" onclick="myFunction('#Globals##$(name)')">
    <tr>
-   <td class="w3-container"><p><i class="fa fa-arrow-down" style="font-size:28px;"></i></p></td> 
-   <td class="w3-container"><p><h2><strong>$( purename(item) )</strong></h2></p></td>
-   <td class="w3-container">$( format(item.shortdescription) )</td>
+   <td class="w3-container" style="width:30px;"><p><i class="fa fa-arrow-down" style="font-size:28px;"></i></p></td> 
+   <td class="w3-container" style="width:40%;"><p><h2><strong>$( purename(item) )</strong></h2></p></td>
+   <td class="w3-container" style="width:60%;">$( format(item.shortdescription) )</td>
    </tr>
    </table>
    </div>
