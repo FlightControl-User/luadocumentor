@@ -13,7 +13,7 @@ return[[#
 # if _file.image then
 <img src="..\Images\$(_file.image)" alt="Banner Image"/>   
 # end
-<div class="w3-container" id="content">
+<div  id="content">
 # --
 # -- Module name
 # --
