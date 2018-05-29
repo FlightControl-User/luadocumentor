@@ -30,7 +30,7 @@ return
 #  end
 #end
 #if typedef and typedef.tag == 'functiontypedef' then
-<div class="w3-container w3-light-blue" onclick="myFunction('#Functions##$(_item.name)')">
+<div class="w3-container w3-theme-l4" onclick="myFunction('#Functions##$(_item.name)')">
 <i class="fa fa-arrow-down" w3-white style="font-size:24px;"></i>
 <a id="$(anchor(_item))" ><strong>$( purename(_item) )</strong></a>
 </div>
@@ -55,7 +55,7 @@ return
 # --
 #if typedef and typedef.tag == 'functiontypedef' then
 #  local fdef = typedef
-<div id= "#Functions##$(_item.name)" class="w3-hide w3-white w3-leftbar w3-border-light-blue">
+<div id= "#Functions##$(_item.name)" class="w3-hide w3-white w3-leftbar w3-border-theme">
   $( applytemplate(fdef, i,nil,isinvokable(_item),ignoredescription) )
 </div>
 #else

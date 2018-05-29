@@ -12,18 +12,20 @@
 return
 [[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
+<head>
 #if _page.headers and #_page.headers > 0 then
-  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
 #  for _, header in ipairs(_page.headers) do
     $(header)
 #  end
    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
    
-  </head>
 #end
-<body>
-<div class="w3-container w3-opacity-max sticky w3-border-white w3-bottombar" style="height:8vw;" id="myHeader">
+</head>
+<body onload="myLoadFunction()">
+<div class="w3-container sticky w3-border-white w3-bottombar" style="height:8vw;background-image:url('../Images/Artillery.JPG');background-size: 100%;" id="myHeader">
   <h1>
   <i class="w3-opennav fa fa-bars w3-text-white " onclick="w3_open()"></i>
   </h1>
@@ -32,24 +34,30 @@ return
 # --
 # -- Generating lateral menu
 # --
-  <nav class="w3-sidenav w3-indigo w3-animate-left" style="display:none">
+  <nav class="w3-sidenav w3-theme-l5 w3-animate-left" style="display:none">
   <a href="javascript:void(0)" 
   onclick="w3_close()"
   class="w3-closenav w3-large">Close &times;</a>
 #  local index = 'index'
 #  if _page.modules then
-   <table class="w3-table w3-blue w3-bordered w3-border">
+   <div class="w3-row">
 #    -- Generating links for all modules
 #    for _, module in sortedpairs( _page.modules ) do
 #      --  Except for current one
 #      if module.name ~= index then
-         <tr>
-         <td class="w3-container" style="word-break:break-word;"><h3><strong>$( purelinkto(module) )</strong></h3>$( module.description and format( module.shortdescription ) )</td>
-         <td class="w3-container" style="min-width:160px; max-width:640px;"><img src="..\Images\$(module.image)" alt="Banner Image"/></td>
-         </tr>         
+     <div class="w3-col s12 m6 l4">
+       <div class="w3-card-4 w3-white w3-margin" style="height:280px;">
+         <div class="w3-display-container w3-text-white w3-text-shadow">
+           <img src= "../Images/$(module.image)" alt="Image" style="height-min:120px;">
+           <div class="w3-display-bottommiddle w3-container style="word-break:break-word;"><h3><strong>$( purelinkto(module) )</strong></h3></div>
+         </div>
+         <div class="w3-container w3-padding-large w3-white" style="word-break:break-word;"><p>$( module.description and format( module.shortdescription ) )</p></div>
+         
+       </div>         
+     </div>
 #      end
 #    end
-   </table>
+   </div>
 #  end
   </nav>
   $( applytemplate(_page.currentmodule) )
@@ -90,6 +98,7 @@ function myFunctionHeader() {
   }
 } 
 </script>
+
 </body>
 </html>
 ]]
