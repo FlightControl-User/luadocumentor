@@ -23,17 +23,10 @@ return
   </head>
 #end
 <body>
-<div class="header w3-indigo w3-theme" id="myHeader">
-<h1>
-  <i class="w3-opennav fa fa-bars" onclick="w3_open()"></i>
-  MOOSE for DCS World
-</h1>
-</div>
-<div id="container" class="content">
-<div id="product">
-  <div id="product_logo"></div>
-  <div id="product_name"><big><b></b></big></div>
-  <div id="product_description"></div>
+<div class="w3-container w3-opacity-max sticky w3-border-white w3-bottombar" style="height:8vw;" id="myHeader">
+  <h1>
+  <i class="w3-opennav fa fa-bars w3-text-white " onclick="w3_open()"></i>
+  </h1>
 </div>
 <div id="main">
 # --
@@ -52,7 +45,7 @@ return
 #      if module.name ~= index then
          <tr>
          <td class="w3-container" style="word-break:break-word;"><h3><strong>$( purelinkto(module) )</strong></h3>$( module.description and format( module.shortdescription ) )</td>
-         <td class="w3-container" style="min-width:320px; max-width:640px;"><img src="..\Images\$(module.image)" alt="Banner Image"/></td>
+         <td class="w3-container" style="min-width:160px; max-width:640px;"><img src="..\Images\$(module.image)" alt="Banner Image"/></td>
          </tr>         
 #      end
 #    end
@@ -85,7 +78,8 @@ window.onscroll = function() {myFunctionHeader()};
 var header = document.getElementById("myHeader");
 
 // Get the offset position of the navbar
-var sticky = header.offsetTop;
+var sticky = 0//header.offsetTop;
+
 
 // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunctionHeader() {
