@@ -10,7 +10,7 @@
 --           - initial API and implementation and initial documentation
 --------------------------------------------------------------------------------
 return [[#
-<div class="w3-container w3-white w3-leftbar w3-border-light-blue" id="record_type">
+<div class="w3-white" id="record_type">
 # --
 # -- Inheritance
 # --
@@ -66,45 +66,42 @@ return [[#
 #local calldef = _recordtypedef:getcalldef()
 #local hasfield = not isempty(_recordtypedef.fields)
 #if calldef or hasfield then
+<div class="fields">
   <h$(i)>Field(s)</h$(i)>
 # if calldef then
-<dl class="function">
-<dt>
+<div class="calldef">
   <a id="$(anchor(calldef,_recordtypedef))" >
   <strong>$( purename(calldef,_recordtypedef) )</strong>
   </a>
-</dt>
-<dd>   
+<div>   
    $( applytemplate(calldef, i, nil, true) )
-</dd>
-</dl>
+</div>
+</div>
 # end
 #  for name, item in sortedpairs( _recordtypedef.fields ) do
 #    if item.type then
 #      local typedef = item:resolvetype()
 #      if not typedef or typedef.tag ~= 'functiontypedef' then 
-<dd>   
-        $( applytemplate(item, i) )
-</dd>   
+<div>   
+        $( applytemplate(item, i+2) )
+</div>   
 #      end
 #    end
 #  end
-</dl>
-<dl class="function">
-<dt>
+</div>
+<div class="functions">
   <h$(i)>Function(s)</h$(i)>
-</dt>
 #  for name, item in sortedpairs( _recordtypedef.fields ) do
 #    if item.type then
 #      local typedef = item:resolvetype()
 #      if typedef and typedef.tag == 'functiontypedef' then 
-<dd>
-        $( applytemplate(item, i) )
-</dd>
+<div>
+        $( applytemplate(item, i+2) )
+</div>
 #      end
 #    end
 #  end
-</dl>  
+</div>  
 #end 
 </div>
 ]]

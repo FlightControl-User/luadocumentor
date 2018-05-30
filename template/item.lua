@@ -10,8 +10,8 @@
 --           - initial API and implementation and initial documentation
 --------------------------------------------------------------------------------
 return 
-[[<dl>
-<dt><h$(i)>
+[[
+<div class="w3-card-2 w3-padding-small w3-margin-top">
 # --
 # -- Resolve item type definition
 # --
@@ -30,16 +30,12 @@ return
 #  end
 #end
 #if typedef and typedef.tag == 'functiontypedef' then
-<div class="w3-container w3-theme-l4" onclick="myFunction('#Functions##$(_item.name)')">
-<i class="fa fa-arrow-down" w3-white style="font-size:24px;"></i>
-<a id="$(anchor(_item))" ><strong>$( purename(_item) )</strong></a>
+<div class="w3-theme-l4" onclick="myFunction('#Functions##$(_item.name)')">
+<h$(i+1)><a id="$(anchor(_item))" ><strong>$( purename(_item) )</strong></a></h$(i+1)>
 </div>
 #else
 <a id="$(anchor(_item))" ><strong>$( purename(_item) )</strong></a>
 #end
-</h$(i)>
-</dt>
-<dd>
 # local ignoredescription = false
 # if _item.shortdescription then
     $( format(_item.shortdescription) )
@@ -55,7 +51,7 @@ return
 # --
 #if typedef and typedef.tag == 'functiontypedef' then
 #  local fdef = typedef
-<div id= "#Functions##$(_item.name)" class="w3-hide w3-white w3-leftbar w3-border-theme">
+<div id= "#Functions##$(_item.name)" class="w3-hide w3-white">
   $( applytemplate(fdef, i,nil,isinvokable(_item),ignoredescription) )
 </div>
 #else
@@ -67,5 +63,5 @@ return
 #  end
 #end
 #
-</dd>
-</dl>]]
+</div>
+]]

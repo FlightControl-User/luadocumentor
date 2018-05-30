@@ -38,52 +38,43 @@ return [[#
 #
 # -- List parameters
 # if paramcount > 0 then
-    <h$(i)>Parameter$( paramcount > 1 and 's' )</h$(i)>
-    <table class="w3-table">
+    <h$(i)><strong>Parameter$( paramcount > 1 and 's' ):</strong></h$(i)>
 #   for position, param in ipairs( fdef.params ) do
+      <div class="w3-row">
 #     if not (position == 1 and ignorefirstparam) then
-        <tr>
-        <td>
 #       local paramline = ""
 #       if param.type then
 #         local link = linkto( param.type )
 #         local name = purename( param.type )
 #         if link then
-#           paramline = paramline .. '<a href=\"' .. link .. '\">' .. name .. "</a>"
+          <div class="w3-quarter"><p><a href="$(link)">$(name)</a></p></div>
 #         else
-#           paramline = paramline .. name
+          <div class="w3-quarter"><p>$(name)</p></div>
 #         end
 #       end
-#
-#       paramline = paramline .. " <strong>" .. param.name ..  "</strong> "
-#
 #       if param.optional then
 #         paramline = paramline .. "optional" .. " "
 #       end
 #       if param.hidden then 
 #         paramline = paramline .. "hidden"
 #       end
-        $(paramline)
-        </td>
-        <td>
+        <div class="w3-quarter"><strong><p>$(param.name)</p></strong></div>
 #       paramline = ""
 #       if param.description and #param.description > 0 then
-#         paramline = paramline .. "\n" .. param.description
+          <div class="w3-half">$(format(param.description))</div>
+#       else
+          <div class="w3-half"><p></p></div>
 #       end
-#
-        $( format (paramline))
-        </td>
-        </tr>
 #     end
+    </div>
 #   end
-    </table>
 # end
 #
 # --
 # -- Describe returns types
 # --
 # if fdef and #fdef.returns > 0 then
-    <h$(i)>Return value$(#fdef.returns > 1 and 's')</h$(i)>
+    <h$(i)><strong>Return value$(#fdef.returns > 1 and 's'):</strong></h$(i)>
 #   --
 #   -- Format nice type list
 #   --
@@ -113,7 +104,7 @@ return [[#
 #
 #       local paramlist = niceparmlist(ret.types)
 #       if #ret.types > 0 and #paramlist > 0 then
-#         returnline = "<em>" .. paramlist .. "</em>"
+#         returnline = paramlist
 #       end
 #       returnline = returnline .. "\n" .. ret.description
         $( format (returnline))
@@ -128,7 +119,7 @@ return [[#
 #       local returnline = "";
 #     -- Show return type if provided
 #     if isreturn then
-#       returnline = "<em>"..paramlist.."</em>"
+#       returnline = paramlist
 #     end
 #     if isdescription then
 #       returnline = returnline .. "\n" .. fdef.returns[1].description

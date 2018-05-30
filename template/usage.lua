@@ -16,7 +16,7 @@ return[[#
 #if _usage then
 #  if #_usage > 1 then
 #    -- Show all usages
-    <h$(i)>Usages:</h$(i)>
+    <h$(i)><strong>Usages:</strong></h$(i)>
     <ul>
 #    -- Loop over several usage description
 #    for _, usage in ipairs(_usage) do
@@ -25,7 +25,7 @@ return[[#
     </ul>
 #  elseif #_usage == 1 then
 #    -- Show unique usage sample
-    <h$(i)>Usage:</h$(i)>
+    <h$(i)><strong>Usage:</strong></h$(i)>
 #    local usage = _usage[1]
     <pre class="example"><code>$( securechevrons(usage.description) )</code></pre>
 #  end
