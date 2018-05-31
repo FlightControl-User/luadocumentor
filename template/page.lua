@@ -27,15 +27,24 @@ return
    
 #end
 <style>
+.picturebox {
+  height:160px
+}
 @media only screen and (max-width: 600px) {
   body {
     font-size: 8px;
   }
+  .picturebox {
+    height:80px
+    }
   h1{font-size:18px} h2{font-size:16px} h3{font-size:14px} h4{font-size:12px} h5{font-size:11px} h6{font-size:10px}
 }
 @media only screen and (max-width: 740px) {
   body {
     font-size: 10px;
+  }
+  .picturebox {
+    height:80px
   }
   h1{font-size:20px} h2{font-size:18px} h3{font-size:16px} h4{font-size:14px} h5{font-size:13px} h6{font-size:12px}
 }
@@ -63,12 +72,12 @@ return
 #      --  Except for current one
 #      if module.name ~= index then
      <div class="w3-col s12 m6 l4">
-       <div class="w3-card-4 w3-white w3-margin" style="height:280px;">
+       <div class="w3-card-4 w3-white w3-margin">
          <div class="w3-display-container w3-text-white w3-text-shadow">
            <img src= "../Images/$(module.image)" alt="Image" style="height-min:120px;">
            <div class="w3-display-bottommiddle w3-container style="word-break:break-word;"><h3><strong>$( purelinkto(module) )</strong></h3></div>
          </div>
-         <div class="w3-container w3-padding-large w3-white" style="word-break:break-word;"><p>$( module.description and format( module.shortdescription ) )</p></div>
+         <div class="w3-padding-large w3-white picturebox" style="word-break:break-word;"><p>$( module.description and format( module.shortdescription ) )</p></div>
          
        </div>         
      </div>
