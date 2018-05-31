@@ -56,7 +56,7 @@ return[[#
       </tr>
     </table>
   </div>
-  <div id= "#Globals##$(name)" class="w3-container w3-white w3-padding-16">
+  <div id= "#Globals##$(name)" class="w3-container w3-white w3-padding-small">
     $( applytemplate(item, i+2) )
   </div>
 #  end

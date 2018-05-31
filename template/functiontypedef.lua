@@ -47,9 +47,9 @@ return [[#
 #         local link = linkto( param.type )
 #         local name = purename( param.type )
 #         if link then
-          <div class="w3-quarter"><p><a href="$(link)">$(name)</a></p></div>
+          <div class="w3-half"><a href="$(link)">$(name)</a>
 #         else
-          <div class="w3-quarter"><p>$(name)</p></div>
+          <div class="w3-half">$(name)
 #         end
 #       end
 #       if param.optional then
@@ -58,7 +58,7 @@ return [[#
 #       if param.hidden then 
 #         paramline = paramline .. "hidden"
 #       end
-        <div class="w3-quarter"><strong><p>$(param.name)</p></strong></div>
+        <strong>$(param.name)</strong></div>
 #       paramline = ""
 #       if param.description and #param.description > 0 then
           <div class="w3-half">$(format(param.description))</div>
