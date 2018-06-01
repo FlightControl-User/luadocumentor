@@ -107,7 +107,7 @@ return [[#
 #       local paramlist = niceparmlist(ret.types)
         <div class="w3-half">
 #       if #ret.types > 0 and #paramlist > 0 then
-          paramlist
+          $( paramlist )
 #       end
         </div>
         <div class="w3-half">
@@ -122,7 +122,7 @@ return [[#
 #     -- Show return type if provided
       <div class="w3-half">
 #     if isreturn then
-        paramlist
+        $( paramlist )
 #     end
       </div>
       <div class="w3-half">
