@@ -43,13 +43,14 @@ return [[#
       <div class="w3-row">
 #     if not (position == 1 and ignorefirstparam) then
 #       local paramline = ""
+        <div class="w3-half">
 #       if param.type then
 #         local link = linkto( param.type )
 #         local name = purename( param.type )
 #         if link then
-          <div class="w3-half"><a href="$(link)">$(name)</a>
+          <a href="$(link)">$(name)</a>
 #         else
-          <div class="w3-half">$(name)
+          $(name)
 #         end
 #       end
 #       if param.optional then
@@ -58,13 +59,16 @@ return [[#
 #       if param.hidden then 
 #         paramline = paramline .. "hidden"
 #       end
-        <strong>$(param.name)</strong></div>
+        <strong>$(param.name)</strong>
+        </div>
+        <div class="w3-half">
 #       paramline = ""
 #       if param.description and #param.description > 0 then
-          <div class="w3-half">$(format(param.description))</div>
+          $(format(param.description))
 #       else
-          <div class="w3-half"><p></p></div>
+          <p></p>
 #       end
+        </div>
 #     end
     </div>
 #   end
@@ -96,36 +100,38 @@ return [[#
 #   --
 #   -- Generate a list if they are several return clauses
 #   --
+    <div class="w3-row">
 #   if #fdef.returns > 1 then
-      <ol>
 #     for position, ret in ipairs(fdef.returns) do
-        <li>
-#       local returnline = "";
 #
 #       local paramlist = niceparmlist(ret.types)
+        <div class="w3-half">
 #       if #ret.types > 0 and #paramlist > 0 then
-#         returnline = paramlist
+          paramlist
 #       end
-#       returnline = returnline .. "\n" .. ret.description
-        $( format ( returnline ) )
-        </li>
+        </div>
+        <div class="w3-half">
+          $( format ( ret.description ) )
+        </div>
 #     end
-      </ol>
 #   else
 #     local paramlist = niceparmlist(fdef.returns[1].types)
 #     local isreturn = fdef.returns and #fdef.returns > 0 and #paramlist > 0
 #     local isdescription = fdef.returns and fdef.returns[1].description and #format(fdef.returns[1].description) > 0
 #
-#       local returnline = "";
 #     -- Show return type if provided
+      <div class="w3-half">
 #     if isreturn then
-#       returnline = paramlist
+        paramlist
 #     end
+      </div>
+      <div class="w3-half">
 #     if isdescription then
-#       returnline = returnline .. "\n" .. fdef.returns[1].description
+        $( format ( fdef.returns[1].description ) )
 #     end
-        $( format( returnline ) )
+      </div>
 #   end
+    </div>
 # end
 #
 #--
