@@ -82,7 +82,7 @@ return [[#
 #     local typelist = {}
 #     for position, type in ipairs(parlist) do
 #       local link = linkto( type )
-#       local name = prettyname( type )
+#       local name = purename( type )
 #       if link then
 #         typelist[#typelist + 1] = '<a href="'..link..'">'..name..'</a>'
 #       else
@@ -107,7 +107,7 @@ return [[#
 #         returnline = paramlist
 #       end
 #       returnline = returnline .. "\n" .. ret.description
-        $( format (returnline))
+        $( format ( returnline ) )
         </li>
 #     end
       </ol>
@@ -124,7 +124,7 @@ return [[#
 #     if isdescription then
 #       returnline = returnline .. "\n" .. fdef.returns[1].description
 #     end
-        $( format(returnline))
+        $( format( returnline ) )
 #   end
 # end
 #
