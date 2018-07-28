@@ -30,28 +30,11 @@ return
 .picturebox {
   height:160px
 }
-@media only screen and (max-width: 600px) {
-  body {
-    font-size: 8px;
-  }
-  .picturebox {
-    height:80px
-    }
-  h1{font-size:18px} h2{font-size:16px} h3{font-size:14px} h4{font-size:12px} h5{font-size:11px} h6{font-size:10px}
-}
-@media only screen and (max-width: 740px) {
-  body {
-    font-size: 10px;
-  }
-  .picturebox {
-    height:80px
-  }
-  h1{font-size:20px} h2{font-size:18px} h3{font-size:16px} h4{font-size:14px} h5{font-size:13px} h6{font-size:12px}
-}
 </style>
 </head>
 <body onload="myLoadFunction()">
-<div class="w3-container sticky w3-border-white w3-bottombar" style="height:8vw;background-image:url('../Images/Artillery.JPG');background-size: 100%;" id="myHeader">
+
+<div class="w3-container sticky w3-border-white w3-bottombar" style="background-image:url('../Images/Moose.JPG');background-size: 100%;" id="myHeader">
   <h1>
   <i class="w3-opennav fa fa-bars w3-text-white " onclick="w3_open()"></i>
   </h1>
@@ -73,7 +56,7 @@ return
 #      if module.name ~= index then
      <div class="w3-col s12 m6 l4">
        <div class="w3-card-4 w3-white w3-margin">
-         <div class="w3-display-container w3-text-white w3-text-shadow">
+         <div class="w3-display-container w3-text-black w3-text-shadow">
            <img src= "../Images/$(module.image)" alt="Image" style="height-min:120px;">
            <div class="w3-display-bottommiddle w3-container style="word-break:break-word;"><h3><strong>$( purelinkto(module) )</strong></h3></div>
          </div>
@@ -104,25 +87,6 @@ function myFunction(id) {
         x.className = x.className.replace(" w3-show", "");
     }
 }
-
-// When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunctionHeader()};
-
-// Get the header
-var header = document.getElementById("myHeader");
-
-// Get the offset position of the navbar
-var sticky = 0//header.offsetTop;
-
-
-// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunctionHeader() {
-  if (window.pageYOffset >= sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-} 
 </script>
 
 </body>
