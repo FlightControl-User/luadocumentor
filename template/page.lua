@@ -56,7 +56,7 @@ return
 #      if module.name ~= index then
      <div class="w3-col s12 m6 l4">
        <div class="w3-card-4 w3-white w3-margin">
-         <div class="w3-display-container w3-text-black w3-text-shadow">
+         <div class="w3-display-container w3-text-white w3-text-shadow">
            <img src= "../Images/$(module.image)" alt="Image" style="height-min:120px;">
            <div class="w3-display-bottommiddle w3-container style="word-break:break-word;"><h3><strong>$( purelinkto(module) )</strong></h3></div>
          </div>
