@@ -73,7 +73,8 @@ return
 </div>
 <script>
 function w3_open() {
-    document.getElementsByClassName("w3-sidenav")[0].style.width = "100%";
+    document.getElementsByClassName("w3-sidenav")[0].style.width = "95vw";
+    document.getElementsByClassName("w3-sidenav")[0].style.maxWidth = "1400px";
     document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
 }
 function w3_close() {
