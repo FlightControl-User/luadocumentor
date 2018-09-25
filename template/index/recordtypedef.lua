@@ -1,31 +1,41 @@
---------------------------------------------------------------------------------
---  Copyright (c) 2012 Sierra Wireless.
---  All rights reserved. This program and the accompanying materials
---  are made available under the terms of the Eclipse Public License v1.0
---  which accompanies this distribution, and is available at
---  http://www.eclipse.org/legal/epl-v10.html
--- 
---  Contributors:
---       Kevin KIN-FOO <kkinfoo@sierrawireless.com>
---           - initial API and implementation and initial documentation
---------------------------------------------------------------------------------
 return [[#
-# local calldef = _recordtypedef:getcalldef()
-# local hasfield = not isempty(_recordtypedef.fields)
+# local modules = templateparams[1]
+# local function inherittype( typedef, name )
+#   if typedef then
+#     local calldef = typedef:getcalldef()
+#     local hasfield = not isempty(typedef.fields or {})
+#
 # if calldef or hasfield then
-  <table class="w3-table">
+ <div class="">
+  <table class="w3-border">
 # if calldef then
-    <tr>
-    <td class="name"><p>$( purelinkto(calldef,_recordtypedef) )</p></td>
-    <td class="summary">$( format(calldef.shortdescription) )</td>
+    <tr class="w3-border">
+    <td class="name w3-padding-small"><style="width=40%;"><p>$( purelinkto(calldef,_recordtypedef) )</p></td>
+    <td class="summary w3-padding-small"><style="width:60%;">$( format(calldef.shortdescription) )</td>
     </tr>
 # end
-#  for _, item in sortedpairs( _recordtypedef.fields ) do
-    <tr>
-    <td class="name"><p>$( purelinkto(item) )</p></td>
-    <td class="summary">$( format(item.shortdescription) )</td>
+#  for _, item in sortedpairs( typedef.fields ) do
+    <tr class="w3-border">
+    <td class="name"><style="width=40%;">$( purelinkto(item) )</td>
+    <td class="summary"><style="width:60%;">$( format( item.shortdescription ) )</td>
     </tr>
 #   end
   </table>
+ </div>
 # end
+#    if typedef.supertype then
+#      local modulename = typedef.supertype.modulename
+#      if modulename then 
+#        local file = modules[modulename]
+#        if file then
+#          local typedef = file.types[typedef.supertype.typename]
+#          typedef.name = name
+#          inherittype( typedef, name )
+#        end
+#      end
+#    end
+#   end
+#   return recordtypedef
+# end
+# inherittype( _recordtypedef, _recordtypedef.name )
 # ]]

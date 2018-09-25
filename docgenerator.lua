@@ -38,7 +38,7 @@ function M.generatedocforfiles(filenames, cssname,noheuristic)
     local code = file:read('*all')
     file:close()
     -- Get module for current file
-    local apimodule, err = lddextractor.generateapimodule(filename, code,noheuristic)
+    local apimodule, err = lddextractor.generateapimodule(filename, code,noheuristic,generatedfiles)
 
     -- Handle modules with module name
     if  apimodule and apimodule.name then

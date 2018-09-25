@@ -99,7 +99,7 @@ if args.format == 'api' then
 
       -- Getting module name
       -- Optimize me
-      local module, moduleerror = lddextractor.generateapimodule(filename, code)
+      local module, moduleerror = lddextractor.generateapimodule(filename, code,nil,nil)
       if not commentfile then
         print('Unable to create documentation file for "'..filename..'"\n'..error)
       elseif not module or not module.name then

@@ -15,12 +15,13 @@ local M = {}
 -- API MODEL
 --------------------------------------------------------------------------------
 
-function M._file()
+function M._file( modules )
   local file = {
     -- FIELDS
     tag              = "file",
     name             = nil,    -- string
     image            = nil,    -- string
+    modules          = modules,
     shortdescription = "",    -- string
     description      = "",    -- string
     types            = {},     -- map from typename to type

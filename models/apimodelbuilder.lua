@@ -251,12 +251,12 @@ end
 
 ------------------------------------------------------
 -- create the module api
-function M.createmoduleapi(ast,modulename)
+function M.createmoduleapi(ast,modulename,modules)
 
   -- Initialise function type naming
   resetfunctiontypeidgenerator()
 
-  local _file = apimodel._file()
+  local _file = apimodel._file( modules )
 
   local _comment2apiobj = {}
 
@@ -285,6 +285,9 @@ function M.createmoduleapi(ast,modulename)
         -- get name
         _file.name = regulartags["module"][1].name or modulename
         _lastapiobject = _file
+        if _file and _file.name then
+          modules[_file.name] = _file
+        end
 
         -- manage descriptions
         _file.shortdescription = parsedcomment.shortdescription
@@ -375,6 +378,12 @@ function M.createmoduleapi(ast,modulename)
         if regulartags["extends"] and regulartags["extends"][1] then
           local supertype = regulartags["extends"][1].type
           if supertype then _recordtypedef.supertype = createtyperef(supertype) end
+          for modulename, module in pairs( modules ) do
+            if module.types[supertype.type] then
+              _recordtypedef.supertype.supertype = module.types[supertype.type].supertype
+            end
+          end
+                
         end
 
         -- manage structure tag

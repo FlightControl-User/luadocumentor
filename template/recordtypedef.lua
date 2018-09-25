@@ -1,14 +1,3 @@
---------------------------------------------------------------------------------
---  Copyright (c) 2012 Sierra Wireless.
---  All rights reserved. This program and the accompanying materials
---  are made available under the terms of the Eclipse Public License v1.0
---  which accompanies this distribution, and is available at
---  http://www.eclipse.org/legal/epl-v10.html
--- 
---  Contributors:
---       Kevin KIN-FOO <kkinfoo@sierrawireless.com>
---           - initial API and implementation and initial documentation
---------------------------------------------------------------------------------
 return [[#
 <div class="w3-white" id="record_type">
 # --
@@ -16,13 +5,18 @@ return [[#
 # --
 #local function inherit( recordtypedef )
 #  if recordtypedef and recordtypedef.supertype then
-     <h$(i)> Extends $( purelinkto( recordtypedef.supertype ) ) </h$(i)>
+#    local type = ", inherits from " .. purelinkto( recordtypedef.supertype )
+     $( type )
 #    local extended = inherit( recordtypedef.supertype )
 #  end
 #  return recordtypedef
 #end
 #if _recordtypedef then
+<h$(2)>
+#  local type = " ==> " .. purelinkto( _recordtypedef )
+     $( type )
 #  inherit( _recordtypedef )
+</h$(2)>
 #end
 # --
 # -- Descriptions
@@ -63,12 +57,14 @@ return [[#
 # --
 # -- Describe type fields
 # --
-#local calldef = _recordtypedef:getcalldef()
-#local hasfield = not isempty(_recordtypedef.fields)
-#if calldef or hasfield then
+#local modules = templateparams[1]
+#local function inherittype( typedef, name )
+#  local calldef = typedef:getcalldef()
+#  local hasfield = not isempty(typedef.fields)
+#  if calldef or hasfield then
 <div class="fields">
   <h$(i)>Field(s)</h$(i)>
-# if calldef then
+#    if calldef then
 <div class="calldef">
   <a id="$(anchor(calldef,_recordtypedef))" >
   <strong>$( purename(calldef,_recordtypedef) )</strong>
@@ -77,31 +73,45 @@ return [[#
    $( applytemplate(calldef, i, nil, true) )
 </div>
 </div>
-# end
-#  for name, item in sortedpairs( _recordtypedef.fields ) do
-#    if item.type then
-#      local typedef = item:resolvetype()
-#      if not typedef or typedef.tag ~= 'functiontypedef' then 
+#    end
+#    for name, item in sortedpairs( _recordtypedef.fields ) do
+#      if item.type then
+#        local typedef = item:resolvetype()
+#        if not typedef or typedef.tag ~= 'functiontypedef' then 
 <div>   
         $( applytemplate(item, i+2) )
 </div>   
+#        end
 #      end
 #    end
-#  end
 </div>
 <div class="functions">
   <h$(i)>Function(s)</h$(i)>
-#  for name, item in sortedpairs( _recordtypedef.fields ) do
-#    if item.type then
-#      local typedef = item:resolvetype()
-#      if typedef and typedef.tag == 'functiontypedef' then 
+#    for name, item in sortedpairs( typedef.fields ) do
+#      if item.type then
+#        local typedef = item:resolvetype()
+#        if typedef and typedef.tag == 'functiontypedef' then 
 <div>
-        $( applytemplate(item, i+2) )
+        $( applytemplate(item, i) )
 </div>
+#        end
+#      end
+#    end
+</div>  
+#  end 
+#  if typedef.supertype then
+#    local modulename = typedef.supertype.modulename
+#    if modulename then 
+#      local file = modules[modulename]
+#      if file then
+#        local typedef = file.types[typedef.supertype.typename]
+#        typedef.name = name
+#        inherittype( typedef, name )
 #      end
 #    end
 #  end
-</div>  
-#end 
+#  return recordtypedef
+#end
+#inherittype( _recordtypedef, _recordtypedef.name )
 </div>
 ]]

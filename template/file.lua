@@ -73,8 +73,8 @@ return[[#
 # end
 #
 # -- show quick description type exposed by module
-  <div class="w3-container w3-theme-l2 w3-margin-top"><h$(i+1)><strong>Type(s)</strong></h$(i+1)></div>
-  
+# --
+  <div class="w3-container w3-theme-l2 w3-margin-top"><h$(i+1)><strong>Type(s)</strong></h$(i+1)></div>  
 # if currenttype and (not isempty(currenttype.fields) or currenttype:getcalldef()) then
 
   <div class="w3-container w3-theme-l2 w3-margin-top"><h$(i+1)><a id="$(anchor(currenttype))" >Type <strong>$(currenttype.name)</strong></a></h$(i+1)></div>
@@ -82,6 +82,24 @@ return[[#
     $( applytemplate(currenttype, i+2, 'index') )
   </div>
 # end
+#
+# -- show quick description type exposed by module
+# if currenttype and (not isempty(currenttype.fields) or currenttype:getcalldef()) then
+  <div class="w3-container w3-theme-l2 w3-margin-top"><h$(i+1)><a id="$(anchor(currenttype))" >Type <strong>$(currenttype.name)</strong></a></h$(i+1)></div>
+  $( applytemplate(currenttype, i+2, 'index') )
+# end
+# --
+# -- Show quick description of other types
+# --
+# if _file.types then
+#  for name, type in sortedpairs( _file.types ) do
+#    if type ~= currenttype and type.tag == 'recordtypedef' and (not isempty(type.fields) or type:getcalldef()) then
+      <div class="w3-container w3-theme-l2 w3-margin-top"><h$(i+1)><a id="$(anchor(type))">Type <strong>$(name)</strong></a></h$(i+1)></div>
+      $( applytemplate(type, i+2, 'index', _file.modules ) )
+#    end
+#  end
+# end
+#
 #
 # --
 # -- Long description of current type
@@ -102,7 +120,7 @@ return[[#
   <div onclick="myFunction('#Types##$(name)')" class="w3-container w3-theme-l2 w3-margin-top"><h$(i+1)><a id="$(anchor(type))">Type <strong>$(name)</strong></a></h$(i+1)></div>
 #     if type ~= currenttype  and type.tag == 'recordtypedef' then
   <div id= "#Types##$(name)" class="w3-container w3-white w3-padding-16" id="module_other_types">
-    $( applytemplate(type, i+2) )
+    $( applytemplate(type, i+2, nil, _file.modules) )
   </div>
 #     end
 #    end
