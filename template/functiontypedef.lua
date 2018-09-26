@@ -28,7 +28,7 @@ return [[#
 #-- Check if this method is defined in a parent class!
 #if originallink then
    <h$(i)><strong>Defined in:</strong></h$(i)>
-   $( originallink )
+   <div class="w3-margin-left">$( format( originallink ) )</div>
 #end
 #
 #
@@ -49,28 +49,28 @@ return [[#
 # if paramcount > 0 then
     <h$(i)><strong>Parameter$( paramcount > 1 and 's' ):</strong></h$(i)>
 #   for position, param in ipairs( fdef.params ) do
-      <div class="w3-row w3-margin-left w3-border-bottom w3-border-l2">
 #     if not (position == 1 and ignorefirstparam) then
+        <div class="w3-row w3-margin-left w3-border-bottom w3-border-l2">
 #       local paramline = ""
-        <div class="w3-half">
-        <p>
-#       if param.type then
-#         local link = linkto( param.type )
-#         local name = purename( param.type )
-#         if link then
-            <a href="$(link)">$(name)</a>
-#         else
-            $(name)
+          <div class="w3-half">
+          <p>
+#         if param.type then
+#           local link = linkto( param.type )
+#           local name = purename( param.type )
+#           if link then
+              <a href="$(link)">$(name)</a>
+#           else
+              $(name)
+#           end
 #         end
-#       end
-#       if param.optional then
-#         paramline = paramline .. "optional" .. " "
-#       end
-#       if param.hidden then
-#         paramline = paramline .. "hidden"
-#       end
+#         if param.optional then
+#           paramline = paramline .. "optional" .. " "
+#         end
+#         if param.hidden then
+#           paramline = paramline .. "hidden"
+#         end
           <strong><strong>$(param.name)</strong></strong>
-        </p>
+          </p>
         </div>
         <div class="w3-half">
 #       paramline = ""

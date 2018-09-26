@@ -104,13 +104,14 @@ return [[#
 #    if modulename then 
 #      local file = modules[modulename]
 #      if file then
-#        local itypedef = file.types[typedef.supertype.typename]
-#        itypedef.originalname = typedef.name
-#        itypedef.originallink = fulllinkto( typedef.supertype )
-#        itypedef.name = name
-#        inherittype( itypedef, name, typedef.originallink )
-#        itypedef.name = itypedef.originalname
-#        itypedef.inheritedname = nil
+#        local supertypedef = file.types[typedef.supertype.typename]
+#        supertypedef.originalname = supertypedef.name
+#        supertypedef.name = name
+#        supertypedef.originallink = fulllinkto( typedef.supertype )
+#        inherittype( supertypedef, name, supertypedef.originallink )
+#        supertypedef.name = supertypedef.originalname
+#        supertypedef.originalname = nil
+#        supertypedef.originallink = nil
 #      end
 #    end
 #  end
