@@ -16,6 +16,7 @@ return
 # -- Resolve item type definition
 # --
 # local typedef = _item:resolvetype()
+# local originallink = templateparams[1]
 
 # --
 # -- Show item type for internal type
@@ -31,7 +32,7 @@ return
 #end
 #if typedef and typedef.tag == 'functiontypedef' then
 <div class="w3-theme-l4 w3-show"  onclick="myFunction('#Functions##$(_item.name)')">
-<h$(i+1)><a id="$(anchor(_item))" ><strong>$( purename(_item) )</strong></a></h$(i+1)>
+<h$(i)><a id="$(anchor(_item))" ><strong>$( purename(_item) )</strong></a></h$(i)>
 </div>
 #else
 <a id="$(anchor(_item))" ><strong>$( purename(_item) )</strong></a>
@@ -52,7 +53,7 @@ return
 #if typedef and typedef.tag == 'functiontypedef' then
 #  local fdef = typedef
 <div id= "#Functions##$(_item.name)" class="w3-show w3-white">
-  $( applytemplate(fdef, i,nil,isinvokable(_item),ignoredescription) )
+  $( applytemplate(fdef, i,nil,isinvokable(_item), true, originallink ) )
 </div>
 #else
 #--

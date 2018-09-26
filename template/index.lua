@@ -20,7 +20,7 @@ return
 #    if module.tag ~= 'index' then
       <tr>
       <td class="name" style="width=40%;">$( purelinkto(module) )</td>
-      <td class="summary" style="width:60%;">$( module.description and format(module.shortdescription) )</td>
+      <td class="summary" style="width=60%;">$( module.description and format(module.shortdescription) )</td>
       </tr>
 #    end
 #  end

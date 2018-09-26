@@ -14,6 +14,7 @@ return [[#
 # local fdef = _functiontypedef
 # local ignorefirstparam = templateparams[1]
 # local ignoredescription = templateparams[2]
+# local originallink = templateparams[3]
 #
 #if not ignoredescription then
 # if fdef.shortdescription then
@@ -23,6 +24,14 @@ return [[#
   $( format(fdef.description) )
 # end
 #end
+#
+#-- Check if this method is defined in a parent class!
+#if originallink then
+   <h$(i)><strong>Defined in:</strong></h$(i)>
+   $( originallink )
+#end
+#
+#
 # --
 # -- Describe parameters
 # --
@@ -40,26 +49,28 @@ return [[#
 # if paramcount > 0 then
     <h$(i)><strong>Parameter$( paramcount > 1 and 's' ):</strong></h$(i)>
 #   for position, param in ipairs( fdef.params ) do
-      <div class="w3-row">
+      <div class="w3-row w3-margin-left w3-border-bottom w3-border-l2">
 #     if not (position == 1 and ignorefirstparam) then
 #       local paramline = ""
         <div class="w3-half">
+        <p>
 #       if param.type then
 #         local link = linkto( param.type )
 #         local name = purename( param.type )
 #         if link then
-          <a href="$(link)">$(name)</a>
+            <a href="$(link)">$(name)</a>
 #         else
-          $(name)
+            $(name)
 #         end
 #       end
 #       if param.optional then
 #         paramline = paramline .. "optional" .. " "
 #       end
-#       if param.hidden then 
+#       if param.hidden then
 #         paramline = paramline .. "hidden"
 #       end
-        <strong>$(param.name)</strong>
+          <strong><strong>$(param.name)</strong></strong>
+        </p>
         </div>
         <div class="w3-half">
 #       paramline = ""
@@ -100,14 +111,14 @@ return [[#
 #   --
 #   -- Generate a list if they are several return clauses
 #   --
-    <div class="w3-row">
+    <div class="w3-row w3-border-bottom w3-margin-left">
 #   if #fdef.returns > 1 then
 #     for position, ret in ipairs(fdef.returns) do
 #
 #       local paramlist = niceparmlist(ret.types)
         <div class="w3-half">
 #       if #ret.types > 0 and #paramlist > 0 then
-          $( paramlist )
+          <p>$( paramlist )</p>
 #       end
         </div>
         <div class="w3-half">
@@ -122,7 +133,7 @@ return [[#
 #     -- Show return type if provided
       <div class="w3-half">
 #     if isreturn then
-        $( paramlist )
+        <p>$( paramlist )</p>
 #     end
       </div>
       <div class="w3-half">

@@ -58,7 +58,7 @@ return [[#
 # -- Describe type fields
 # --
 #local modules = templateparams[1]
-#local function inherittype( typedef, name )
+#local function inherittype( typedef, name, originallink )
 #  local calldef = typedef:getcalldef()
 #  local hasfield = not isempty(typedef.fields)
 #  if calldef or hasfield then
@@ -79,7 +79,7 @@ return [[#
 #        local typedef = item:resolvetype()
 #        if not typedef or typedef.tag ~= 'functiontypedef' then 
 <div>   
-        $( applytemplate(item, i+2) )
+        $( applytemplate(item, i+2 ) )
 </div>   
 #        end
 #      end
@@ -89,10 +89,10 @@ return [[#
   <h$(i)>Function(s)</h$(i)>
 #    for name, item in sortedpairs( typedef.fields ) do
 #      if item.type then
-#        local typedef = item:resolvetype()
-#        if typedef and typedef.tag == 'functiontypedef' then 
+#        local ftypedef = item:resolvetype()
+#        if ftypedef and ftypedef.tag == 'functiontypedef' then 
 <div>
-        $( applytemplate(item, i) )
+        $( applytemplate( item, i, nil, originallink ) )
 </div>
 #        end
 #      end
@@ -104,14 +104,18 @@ return [[#
 #    if modulename then 
 #      local file = modules[modulename]
 #      if file then
-#        local typedef = file.types[typedef.supertype.typename]
-#        typedef.name = name
-#        inherittype( typedef, name )
+#        local itypedef = file.types[typedef.supertype.typename]
+#        itypedef.originalname = typedef.name
+#        itypedef.originallink = fulllinkto( typedef.supertype )
+#        itypedef.name = name
+#        inherittype( itypedef, name, typedef.originallink )
+#        itypedef.name = itypedef.originalname
+#        itypedef.inheritedname = nil
 #      end
 #    end
 #  end
 #  return recordtypedef
 #end
-#inherittype( _recordtypedef, _recordtypedef.name )
+#inherittype( _recordtypedef, _recordtypedef.name, _recordtypedef.name )
 </div>
 ]]
