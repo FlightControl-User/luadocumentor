@@ -1,24 +1,6 @@
 return [[#
 <div class="w3-white" id="record_type">
 # --
-# -- Inheritance
-# --
-#local function inherit( recordtypedef )
-#  if recordtypedef and recordtypedef.supertype then
-#    local type = ", inherits from " .. purelinkto( recordtypedef.supertype )
-     $( type )
-#    local extended = inherit( recordtypedef.supertype )
-#  end
-#  return recordtypedef
-#end
-#if _recordtypedef then
-<h$(2)>
-#  local type = " ==> " .. purelinkto( _recordtypedef )
-     $( type )
-#  inherit( _recordtypedef )
-</h$(2)>
-#end
-# --
 # -- Descriptions
 # --
 #if _recordtypedef.shortdescription and #_recordtypedef.shortdescription > 0 then
