@@ -27,13 +27,19 @@ return
    
 #end
 <style>
+:target::before {
+  content: "";
+  display: block;
+  height: 104px;
+  margin: -104px 0 0;
+}
+
 .picturebox {
   height:160px
 }
 </style>
 </head>
-<body onload="myLoadFunction()">
-
+<body onload="myLoadFunction()" >
 <div class="w3-container sticky w3-border-white w3-bottombar" style="background-image:url('../Images/Moose.JPG');background-size: 100%;" id="myHeader">
   <h1>
   <i class="w3-opennav fa fa-bars w3-text-white " onclick="w3_open()"></i>
@@ -55,13 +61,12 @@ return
 #      --  Except for current one
 #      if module.name ~= index then
      <div class="w3-col s12 m6 l4">
-       <div class="w3-card-4 w3-white w3-margin">
+       <div class="w3-card-4 w3-white w3-margin-16">
          <div class="w3-display-container w3-text-white w3-text-shadow">
            <img src= "../Images/$(module.image)" alt="Image">
-           <div class="w3-display-bottommiddle" style="word-break:break-word;"><h1><strong>$( purelinkto(module) )</strong></h1></div>
+           <div class="w3-display-bottommiddle" style="word-break:break-word;"><h2><strong>$( purelinkto(module) )</strong></h2></div>
          </div>
-##--         <div class="w3-padding-large w3-white picturebox" style="word-break:break-word;"><p>$( module.description and format( module.shortdescription ) )</p></div>
-         
+         <div class="w3-padding w3-white picturebox" style="word-break:break-word;"><p>$( module.description and format( module.shortdescription ) )</p></div>
        </div>         
      </div>
 #      end

@@ -53,35 +53,35 @@ return [[#
         <div class="w3-row w3-margin-left w3-border-bottom w3-border-l2">
 #       local paramline = ""
           <div class="w3-half">
-          <p>
-#         if param.type then
-#           local link = linkto( param.type )
-#           local name = purename( param.type )
-#           if link then
-              <a href="$(link)">$(name)</a>
-#           else
-              $(name)
+            <p>
+#           if param.type then
+#             local link = linkto( param.type )
+#             local name = purename( param.type )
+#             if link then
+                <a href="$(link)">$(name)</a>
+#             else
+                $(name)
+#             end
 #           end
-#         end
-#         if param.optional then
-#           paramline = paramline .. "optional" .. " "
-#         end
-#         if param.hidden then
-#           paramline = paramline .. "hidden"
-#         end
-          <strong><strong>$(param.name)</strong></strong>
-          </p>
-        </div>
-        <div class="w3-half">
-#       paramline = ""
-#       if param.description and #param.description > 0 then
-          $(format(param.description))
-#       else
-          <p></p>
-#       end
+#           if param.optional then
+#             paramline = paramline .. "optional" .. " "
+#           end
+#           if param.hidden then
+#             paramline = paramline .. "hidden"
+#           end
+            <strong><strong>$(param.name)</strong></strong>
+            </p>
+          </div>
+          <div class="w3-half">
+#           paramline = ""
+#           if param.description and #param.description > 0 then
+              $(format(param.description))
+#           else
+              <p></p>
+#           end
+          </div>
         </div>
 #     end
-    </div>
 #   end
 # end
 #

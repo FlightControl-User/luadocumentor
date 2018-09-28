@@ -44,17 +44,16 @@ return [[#
 #  local calldef = typedef:getcalldef()
 #  local hasfield = not isempty(typedef.fields)
 #  if calldef or hasfield then
-<div class="fields">
+<div class="fields w3-container w3-theme-l2">
   <h$(i)>Field(s)</h$(i)>
+</div>
 #    if calldef then
 <div class="calldef">
   <a id="$(anchor(calldef,_recordtypedef))" >
   <strong>$( purename(calldef,_recordtypedef) )</strong>
   </a>
-<div>   
    $( applytemplate(calldef, i, nil, true) )
-</div>
-</div>
+<div>   
 #    end
 #    for name, item in sortedpairs( _recordtypedef.fields ) do
 #      if item.type then
@@ -66,20 +65,17 @@ return [[#
 #        end
 #      end
 #    end
-</div>
-<div class="functions">
+<div class="functions  w3-container w3-theme-l2">
   <h$(i)>Function(s)</h$(i)>
+</div>  
 #    for name, item in sortedpairs( typedef.fields ) do
 #      if item.type then
 #        local ftypedef = item:resolvetype()
 #        if ftypedef and ftypedef.tag == 'functiontypedef' then 
-<div>
         $( applytemplate( item, i, nil, originallink ) )
-</div>
 #        end
 #      end
 #    end
-</div>  
 #  end 
 #  if typedef.supertype then
 #    local modulename = typedef.supertype.modulename
