@@ -31,7 +31,7 @@ return
 #  end
 #end
 #if typedef and typedef.tag == 'functiontypedef' then
-<div class="w3-theme-l4 w3-show"  onclick="myFunction('#Functions##$(_item.name)')">
+<div class="w3-theme-l2">
 <h$(i)><a id="$(anchor(_item))" ><strong>$( purename(_item) )</strong></a></h$(i)>
 </div>
 #else

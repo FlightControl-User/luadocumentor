@@ -33,20 +33,20 @@ return [[#
 #     if calldef or hasfield then
         <div class="w3-card w3-margin">
         <table class="w3-table w3-border-bottom w3-border-theme-l2">
-          <tr class="w3-theme-l1 w3-padding-16">
-            <th class="w3-half w3-left-align w3-container" style="maxwidth:40%;width:40%; word-wrap: break-word">Fields and Methods inherited from $( originalname )</th>
-            <th class="w3-half w3-left-align w3-container">Description</th>
+          <tr class="w3-theme-l1">
+            <th class="w3-half w3-left-align w3-container w3-padding-16"word-wrap: break-word">Fields and Methods inherited from $( originalname )</th>
+            <th class="w3-half w3-left-align w3-container w3-padding-16">Description</th>
           </tr>
 #       if calldef then
-          <tr class="w3-border w3-padding-16">
-            <td class="name"><style="maxwidth:40%;width:40%;"><p>$( purelinkto(calldef,_recordtypedef) )</p></td>
-            <td class="summary"><style="width:60%;">$( format(calldef.shortdescription) )</td>
+          <tr class="w3-border">
+            <td class="name w3-half w3-container"><style="word-wrap: break-word"><p>$( purelinkto(calldef,_recordtypedef) )</p></td>
+            <td class="summary w3-half w3-container"><style="word-wrap: break-word">$( format(calldef.shortdescription) )</td>
           </tr>
 #       end
 #       for _, item in sortedpairs( typedef.fields ) do
-          <tr class="w3-border w3-padding-16">
-            <td class="name w3-half" style="maxwidth:40%;width:40%; word-wrap: break-word"><p>$( purelinkto( item ) )</p></td>
-            <td class="summary w3-half" style="word-wrap: break-word">$( format( item.shortdescription ) )</td>
+          <tr class="w3-border">
+            <td class="name w3-half w3-container" style="word-wrap: break-word"><p>$( purelinkto( item ) )</p></td>
+            <td class="summary w3-half w3-container" style="word-wrap: break-word">$( format( item.shortdescription ) )</td>
           </tr>
 #       end
         </table>

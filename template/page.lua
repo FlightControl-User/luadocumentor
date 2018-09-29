@@ -30,19 +30,22 @@ return
 :target::before {
   content: "";
   display: block;
-  height: 104px;
-  margin: -104px 0 0;
+  height: calc( var( --headerheight, 0 ) );
+  margin: calc( var( --headerheight, 0) ) 0 0;
 }
 
 .picturebox {
-  height:160px
+  height:100px;
+}
+a {
+  display:inline-block;
 }
 </style>
 </head>
 <body onload="myLoadFunction()" >
-<div class="w3-container sticky w3-border-white w3-bottombar" style="background-image:url('../Images/Moose.JPG');background-size: 100%;" id="myHeader">
+<div id="myHeader" class="w3-container sticky w3-border-white w3-bottombar" style="background-image:url('../Images/Moose.JPG');">
   <h1>
-  <i class="w3-opennav fa fa-bars w3-text-white " onclick="w3_open()"></i>
+  <i class="fa fa-bars w3-text-white fa-2x" onclick="w3_open()"></i>
   </h1>
 </div>
 <div id="main">
@@ -66,7 +69,7 @@ return
            <img src= "../Images/$(module.image)" alt="Image">
            <div class="w3-display-bottommiddle" style="word-break:break-word;"><h2><strong>$( purelinkto(module) )</strong></h2></div>
          </div>
-         <div class="w3-padding w3-white picturebox" style="word-break:break-word;"><p>$( module.description and format( module.shortdescription ) )</p></div>
+         <div class="w3-container w3-padding w3-white picturebox" style="word-break:break-word;"><p>$( module.description and format( module.shortdescription ) )</p></div>
        </div>         
      </div>
 #      end
