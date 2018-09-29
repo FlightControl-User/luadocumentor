@@ -11,21 +11,27 @@
 --------------------------------------------------------------------------------
 return
 [[#
-#if _index.modules then
-<div id="content">
-<h2>Module$( #_index.modules > 1 and 's' )</h2>
- <div class="w3-theme-d2 w3-margin-top ">
-  <table class="w3-table w3-left-align w3-theme-d2 module_list">
-#  for _, module in sortedpairs( _index.modules ) do
-#    if module.tag ~= 'index' then
-      <tr>
-      <td class="name" style="width=40%;">$( purelinkto(module) )</td>
-      <td class="summary" style="width=60%;">$( module.description and format(module.shortdescription) )</td>
-      </tr>
-#    end
-#  end
-  </table>
- </div>
-</div>
+# if _index.modules then
+  <img src="../Images/Moose.JPG" alt="Banner Image"/>   
+  <div id="content">
+    <div class="w3-theme-d2 w3-margin-top">
+    <h2>Module$( #_index.modules > 1 and 's' )</h2>
+    </div>
+    <div id="index_modules" class="w3-row">
+#   for _, module in sortedpairs( _index.modules ) do
+#     if module.tag ~= 'index' then
+        <div class="w3-card-4 w3-white w3-padding w3-margin-32">
+          <div class="w3-display-container w3-quarter">
+            <img src= "../Images/$(module.image)" alt="Image">
+          </div>
+          <div class="w3-container w3-rest">
+            <div class="w3-container" style="word-break:break-word;"><h2><strong>$( purelinkto(module) )</strong></h2></div>
+            <div class="w3-container" style="word-break:break-word;"><p>$( module.description and format( module.shortdescription ) )</p></div>
+          </div>
+        </div>         
+#     end
+    </div>
+#   end
+  </div>
 #--      <td class="summary" style="width:60%;">$( format(item.shortdescription) )<img src="..\Images\$(module.image)" alt="Banner Image"/></td>
 #end ]]

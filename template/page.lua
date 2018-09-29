@@ -37,9 +37,7 @@ return
 .picturebox {
   height:100px;
 }
-a {
-  display:inline-block;
-}
+
 </style>
 </head>
 <body onload="myLoadFunction()" >
