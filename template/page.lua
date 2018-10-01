@@ -27,13 +27,6 @@ return
    
 #end
 <style>
-:target::before {
-  content: "";
-  display: block;
-  height: calc( var( --headerheight, 0 ) );
-  margin: calc( var( --headerheight, 0) ) 0 0;
-}
-
 .picturebox {
   height:100px;
 }
