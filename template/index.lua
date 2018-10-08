@@ -12,7 +12,7 @@
 return
 [[#
 # if _index.modules then
-  <img src="..\Images\Moose.JPG" alt="Banner Image"/>   
+  <img src="..\Images\MOOSE.JPG" alt="Banner Image"/>   
   <div id="content">
     <div class="w3-theme-d2 w3-margin-top">
     <h2>Module$( #_index.modules > 1 and 's' )</h2>
